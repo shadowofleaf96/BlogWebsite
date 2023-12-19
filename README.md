@@ -56,9 +56,7 @@ Make sure you have the following installed on your machine:
    ```bash
    npx nodemon
    ```
-
-Visit [my blog website](https://blog-website-7mkl.onrender.com) to access the TechBlog Blog.
-
+   
 ## Usage
 
 1. **Create an Account**: Register for a new account on the TechBlog.
