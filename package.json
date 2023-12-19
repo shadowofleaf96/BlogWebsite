@@ -1,7 +1,7 @@
 {
-    "name": "secure-node-app",
+    "name": "TechBlog",
     "version": "1.0.0",
-    "description": "Sample Node.js application for security challenge",
+    "description": "TechBlog using Express, Tailwind CSS, EJS",
     "main": "index.js",
     "scripts": {
         "start": "node app.js"
@@ -18,12 +18,12 @@
         "express-rate-limit": "^7.0.2",
         "express-session": "^1.17.3",
         "i18next": "^23.5.1",
+        "express-validator": "^7.0.1",
         "i18next-browser-languagedetector": "^7.1.0",
         "i18next-express-middleware": "^2.0.0",
         "i18next-fs-backend": "^2.2.0",
         "i18next-http-backend": "^2.2.2",
         "i18next-http-middleware": "^3.4.0",
-        "i18next-node-fs-backend": "^1.2.1",
         "i18next-xhr-backend": "^3.2.2",
         "moment": "^2.29.4",
         "multer": "^1.4.5-lts.1",
