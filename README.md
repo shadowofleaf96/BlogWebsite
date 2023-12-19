@@ -4,6 +4,8 @@
 
 Welcome to TechBlog, an open-source gaming blog created with Tailwind CSS, EJS, and Express.js. TechBlog is designed to be a lightweight and customizable platform for gamers and enthusiasts to share their thoughts, reviews, and experiences in the tech gaming world.
 
+Live demo : [live demo](https://blog-website-7mkl.onrender.com/)
+
 ## Table of Contents
 
 - [Features](#features)
