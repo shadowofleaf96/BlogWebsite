@@ -1,5 +1,6 @@
 const express = require("express");
 const session = require("express-session");
+const MemoryStore = require("memorystore")(session);
 const cookieParser = require("cookie-parser");
 const multer = require("multer");
 const bodyParser = require("body-parser");
@@ -8,13 +9,16 @@ const cors = require("cors");
 const registerController = require("./controllers/registerController");
 const authController = require("./controllers/authController");
 const profileController = require("./controllers/profileController");
-const { i18next, i18nextMiddleware } = require("./controllers/profileController");
+const {
+  i18next,
+  i18nextMiddleware,
+} = require("./controllers/profileController");
 const { loginLimiter, loginValidator } = require("./utils/utilsFunct");
-const { csrfProtect } = require("./controllers/authController"); // Import the csrfProtect middleware from authController
+const { csrfProtect } = require("./controllers/authController");
 const { passport } = require("./controllers/authController");
 
 const app = express();
-const formParser = bodyParser.urlencoded({ extended: false }); // Add formParser middleware here
+const formParser = bodyParser.urlencoded({ extended: false });
 const secretKey =
   "eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTY5NTY0NzAxOCwiaWF0IjoxNjk1NjQ3MDE4fQ.SMr1eGjU5OJW2Hxa0pzZHLi2a-y-njx2CteH5e0qL5c";
 
@@ -23,10 +27,13 @@ app.use(
   session({
     secret: secretKey,
     resave: false,
+    store: new MemoryStore({
+      checkPeriod: 86400000,
+    }),
     saveUninitialized: false,
     cookie: {
       httpOnly: true,
-      secure: false, // This makes me debug for hours, and it is simple
+      secure: false,
     },
   })
 );
@@ -150,12 +157,17 @@ app.post("/register", formParser, registerController.registerUser);
 app.get("/logout", authController.logout);
 
 // Add routes for creating, editing, and deleting blog posts
-app.get('/blogs/new', profileController.newBlog);
-app.post('/blogs/new', upload.single("myFile"), formParser, profileController.createBlog);
-app.get('/blogs/edit', profileController.editBlog);
-app.post('/blogs/edit', formParser, profileController.updateBlog);
-app.get('/blogs/delete', profileController.confirmDelete);
-app.post('/blogs/delete', formParser, profileController.deleteBlog);
+app.get("/blogs/new", profileController.newBlog);
+app.post(
+  "/blogs/new",
+  upload.single("myFile"),
+  formParser,
+  profileController.createBlog
+);
+app.get("/blogs/edit", profileController.editBlog);
+app.post("/blogs/edit", formParser, profileController.updateBlog);
+app.get("/blogs/delete", profileController.confirmDelete);
+app.post("/blogs/delete", formParser, profileController.deleteBlog);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
