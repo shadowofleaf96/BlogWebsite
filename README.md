@@ -1,6 +1,6 @@
 # TechBlog
 
-![TechBlog Logo](link_to_logo.png)
+![TechBlog Logo](https://github.com/shadowofleaf96/BlogWebsite/blob/master/public/images/Screenshot%202023-12-19%20213148.png?raw=true)
 
 Welcome to TechBlog, an open-source gaming blog created with Tailwind CSS, EJS, and Express.js. TechBlog is designed to be a lightweight and customizable platform for gamers and enthusiasts to share their thoughts, reviews, and experiences in the tech gaming world.
 
